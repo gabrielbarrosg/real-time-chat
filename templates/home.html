@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %} 
+<div class="container">
+    <h1>Real Time Chat Room</h1>
+    <form>
+        <input type="text" placeholder="Username" name="name" value="{{name}}">
+        <input type="text" placeholder="Room Code" name="code" value="{{code}}">
+        
+        <button id="join" type="submit" name="join">JOIN</button>
+        <p>or</p>
+        <button id="create" type="submit" name="create">CREATE ROOM</button>
+    </form>
+</div>
+
+{% endblock %}
