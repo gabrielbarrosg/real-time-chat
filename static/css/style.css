@@ -8,6 +8,10 @@
 h1{
   margin-bottom: 10px;
 }
+h3{
+  color: rgb(206, 94, 94);
+  margin-bottom: 10px;
+}
 .container {
   width: 100vw;
   height: 100vh;
@@ -40,8 +44,18 @@ button{
 }
 #join{
   margin-bottom: 12px;
+  background-color: #4F5D75;
+  transition-duration: 0.3s;
+}
+#join:hover{
   background-color: #2D3142;
+  cursor: pointer;
 }
 #create{
-  background-color: #EF8354; 
+  background-color: #EF8354;
+  transition-duration: 0.3s; 
+}
+#create:hover{
+  background-color: #e16834;
+  cursor: pointer;
 }
