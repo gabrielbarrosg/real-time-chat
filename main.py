@@ -43,7 +43,10 @@ def homePage():
 
 @app.route("/room")
 def room():
-    return render_template("chat_room.html")
+    name = session.get('name')
+    room = session.get('room')
+    messages = rooms[room]['messages']
+    return render_template("chat_room.html", room=room, name=name, messages=messages)
 
 if __name__ == "__main__":
     socketio.run(app, debug=True)
