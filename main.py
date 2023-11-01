@@ -7,6 +7,7 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = "123456"
 socketio = SocketIO(app)
 
+#quando o server é reiniciado as mensagens são perdidas, pois estão armazenadas na RAM
 rooms = {}
 
 def gen_code(length):
@@ -47,6 +48,43 @@ def room():
     room = session.get('room')
     messages = rooms[room]['messages']
     return render_template("chat_room.html", room=room, name=name, messages=messages)
+
+@socketio.on("message")
+def message(data):
+    room = session.get("room")
+    if room not in rooms:
+        return
+    content = {
+        "name": session.get("name"),
+        "message": data["data"]
+    }
+    #envia a mensgaem para todas as pessoas da sala
+    send(content, to=room)
+    rooms[room]["messages"].append(content)
+    print(f"{session.get('name')} said: {data['data']}")
+
+@socketio.on("connect")
+def connect(auth):
+    room = session.get('room')
+    name = session.get('name')
+    join_room(room)
+    send({"name": name, "message": "has entered the room"}, to=room)
+    rooms[room]["members"] += 1
+    print(f"{name} joined room {room}")
+
+@socketio.on("disconnect")
+def disconnect():
+    room = session.get('room')
+    name = session.get('name')
+    leave_room(room)
+
+    if room in rooms:
+        rooms[room]["members"] -= 1
+        if rooms[room]["members"] <= 0:
+            del rooms[room]
+
+    send({"name": name, "message": "has left the room"}, to=room)
+    print(f"{name} has left room {room}")
 
 if __name__ == "__main__":
     socketio.run(app, debug=True)
