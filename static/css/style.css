@@ -90,3 +90,7 @@ h2 {
 #message{
   flex: 1;
 }
+
+strong{
+  color: rgb(0, 0, 136);
+}
