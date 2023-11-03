@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="message-box">
-  <h2>Chat Room: {{room}}</h2>
+  <h2 class="room-name">{{room}}</h2>
+  <a href="/" class="leave-room">Sair da sala</a>
   <div class="messages" id="messages"></div>
   <div class="inputs">
-    <input type="text" rows="3" placeholder="Message" name="message" id="message">
+    <input type="text" rows="3" placeholder="Digite algo" name="message" id="message">
     <button type="button" name="send" id="send-btn" onClick="sendMessage()">Enviar</button>
 
 

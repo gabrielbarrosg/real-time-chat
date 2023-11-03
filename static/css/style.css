@@ -5,6 +5,9 @@
   padding: 0;
   font-family: 'Roboto', sans-serif;
 }
+body{
+  background-color: whitesmoke;
+}
 h1{
   margin-bottom: 10px;
 }
@@ -19,6 +22,7 @@ h3{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: whitesmoke;
   }
   
 form{
@@ -42,6 +46,7 @@ button{
 }
 #join{
   margin-bottom: 12px;
+  color: whitesmoke;
   background-color: #4F5D75;
   transition-duration: 0.3s;
 }
@@ -50,6 +55,7 @@ button{
   cursor: pointer;
 }
 #create{
+  color: whitesmoke;
   background-color: #EF8354;
   transition-duration: 0.3s; 
 }
@@ -59,15 +65,13 @@ button{
 }
 
 .message-box{
-  border-color: black;
-  border-width: 2px;
-  border-style: solid;
-  border-radius: 10px;
+  margin-top: 10vh;
+  margin-left: 3vw;
   background-color: whitesmoke;
   height: 80vh;
   display: flex;
   flex-direction: column;
-  width: 80vw;
+  width: 95vw;
   align-items: stretch;
 }
 
@@ -75,22 +79,48 @@ button{
   overflow-y: scroll;
   flex: 1;
   width: 100%;
-}
 
+}
+.text{
+  padding-left: 5px;
+  padding-top: 5px;
+}
 .inputs {
   padding: 10px;
   display: flex;
-
 }
 
 h2 {
   text-align: center;
 }
-
+#send-btn{
+  width: 6pc;
+  color: whitesmoke;
+  background-color: #4F5D75;
+  transition-duration: 0.3s;
+}
+#send-btn:hover{
+  background-color: #2D3142;
+  cursor: pointer;
+}
 #message{
   flex: 1;
 }
 
 strong{
   color: rgb(0, 0, 136);
+}
+
+.base-div{
+  display: flex;
+  align-items: center;
+}
+
+.room-name{
+  margin-bottom: 10px;
+  color:#e16834;
+}
+.leave-room{
+  text-align: right;
+  color: red;
 }
