@@ -6,9 +6,7 @@
   <div class="messages" id="messages"></div>
   <div class="inputs">
     <input type="text" rows="3" placeholder="Digite algo" name="message" id="message">
-    <button type="button" name="send" id="send-btn" onClick="sendMessage()">Enviar</button>
-
-
+    <button type="button" name="send" id="send-btn" onClick="enviar()">Enviar</button>
   </div>
 </div>
 
@@ -16,25 +14,24 @@
   var socketio = io();
   const messages = document.getElementById("messages")
   const createMessage = (name, msg) => {
-    const content = `
+    const msg_na_tela = `
     <div class="text">
       <span>
         <strong>${name}</strong>: ${msg}
       </span>  
     </div>  
     `;
-    messages.innerHTML += content;
+    messages.innerHTML += msg_na_tela;
   };
 
-  socketio.on("message", (data)=>{
-    createMessage(data.name, data.message);
+  socketio.on("message", (infos)=>{
+    createMessage(infos.name, infos.message);
   })
-
   /*envia a mensaggem pro servidor, e o servidor envia para os outros usuários*/
-  const sendMessage = () => {
+  const enviar = () => {
     const message = document.getElementById("message");
     if (message.value == "") return;
-    socketio.emit("message", { data: message.value });
+    socketio.emit("message", { infos: message.value });
     message.value = "";
   };
 </script>

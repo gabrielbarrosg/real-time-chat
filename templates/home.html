@@ -2,13 +2,13 @@
 
 {% block content %} 
 <div class="container">
-    {% if error %}
-    <h3>{{error}}</h3>
+    {% if aviso %}
+    <h3>{{aviso}}</h3>
     {% endif %}
     <h1>Real Time Chat Room</h1>
     <form method="post">
-        <input type="text" placeholder="Username" name="name" value="{{name}}" required>
-        <input type="text" placeholder="Room Code" name="code" value="{{code}}">
+        <input type="text" placeholder="Nome de usuário" name="name" value="{{name}}" required>
+        <input type="text" placeholder="Código da sala" name="code" value="{{code}}" required>
         
         <button id="join" type="submit" name="join">ENTRAR</button>
         <p>ou</p>
